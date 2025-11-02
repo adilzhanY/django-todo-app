@@ -100,38 +100,6 @@ export default function FilterSort({
 
   return (
     <>
-      <style>{`
-        @keyframes dropdownSlideIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes dropdownSlideOut {
-          from {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          to {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-        }
-        
-        .dropdown-slide-in {
-          animation: dropdownSlideIn 0.2s ease-out forwards;
-        }
-        
-        .dropdown-slide-out {
-          animation: dropdownSlideOut 0.15s ease-in forwards;
-        }
-      `}</style>
-
       <div className="flex gap-2">
         {/* Filter Button */}
         <div ref={filterRef} className="relative">
@@ -144,11 +112,7 @@ export default function FilterSort({
                 setIsSortOpen(false);
               }
             }}
-            className="p-2.5 rounded-2xl bg-[#1e1e1e] text-gray-100 font-medium 
-            shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),0_1px_2px_rgba(0,0,0,0.4),0_4px_8px_rgba(0,0,0,0.25)]
-            hover:shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.5),0_6px_12px_rgba(0,0,0,0.3)]
-            active:translate-y-[1px] transition-all duration-200 hover:cursor-pointer
-            hover:scale-110 active:scale-95"
+            className="btn-icon"
             aria-label="Filter"
           >
             <Filter size={18} />
@@ -158,7 +122,7 @@ export default function FilterSort({
           {isFilterOpen && (
             <div
               className={`${isFilterClosing ? "dropdown-slide-out" : "dropdown-slide-in"} 
-              absolute right-0 mt-2 w-72 bg-[#1e1e1e]/95 backdrop-blur-md rounded-2xl 
+              absolute right-0 mt-2 w-72 bg-card/95 backdrop-blur-md rounded-2xl 
               shadow-[0_8px_32px_rgba(0,0,0,0.6)] border border-gray-700 p-4 z-50`}
             >
               <h3 className="text-sm font-semibold text-gray-100 mb-3">
@@ -177,21 +141,17 @@ export default function FilterSort({
                       <button
                         type="button"
                         onClick={() => toggleStatus(option.value)}
-                        className={`flex-shrink-0 w-5 h-5 rounded-lg border-2 flex items-center justify-center transition-all duration-300 outline-none
-                        shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_1px_2px_rgba(0,0,0,0.4)]
-                        group-hover:scale-110 ${
-                          selectedStatuses.includes(option.value)
-                            ? "border-blue-500 bg-blue-500"
-                            : "border-gray-500 bg-transparent group-hover:border-gray-400"
-                        }`}
+                        className={`checkbox-custom ${selectedStatuses.includes(option.value)
+                          ? "border-blue-500 bg-blue-500"
+                          : "border-gray-500 bg-transparent group-hover:border-gray-400"
+                          } w-5 h-5`}
                       >
                         <Check
                           size={14}
-                          className={`text-white transition-all duration-300 ${
-                            selectedStatuses.includes(option.value)
-                              ? "opacity-100 scale-100"
-                              : "opacity-0 scale-50"
-                          }`}
+                          className={`text-white transition-all duration-300 ${selectedStatuses.includes(option.value)
+                            ? "opacity-100 scale-100"
+                            : "opacity-0 scale-50"
+                            }`}
                           strokeWidth={3}
                         />
                       </button>
@@ -210,10 +170,7 @@ export default function FilterSort({
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full p-2 bg-[#2a2a2a] text-gray-100 rounded-xl 
-                  border border-transparent focus:border-gray-500 outline-none 
-                  shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_1px_2px_rgba(0,0,0,0.4)] 
-                  transition-all text-sm"
+                  className="input-field w-full text-sm"
                 />
               </div>
 
@@ -221,9 +178,8 @@ export default function FilterSort({
               <div className="flex gap-2">
                 <button
                   onClick={clearAllFilters}
-                  className="flex-1 py-2 rounded-xl bg-[#2a2a2a] text-gray-300 text-sm font-medium 
-                  shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_1px_2px_rgba(0,0,0,0.4)]
-                  hover:bg-[#333333] active:translate-y-[1px] transition-all duration-200 
+                  className="flex-1 py-2 rounded-xl bg-input text-gray-300 text-sm font-medium 
+                  shadow-input hover:bg-[#333333] active:translate-y-px transition-all duration-200 
                   hover:cursor-pointer outline-none"
                 >
                   Zurücksetzen
@@ -232,7 +188,7 @@ export default function FilterSort({
                   onClick={applyFilters}
                   className="flex-1 py-2 rounded-xl bg-blue-600 text-white text-sm font-medium 
                   shadow-[0_2px_8px_rgba(37,99,235,0.3)]
-                  hover:bg-blue-700 active:translate-y-[1px] transition-all duration-200 
+                  hover:bg-blue-700 active:translate-y-px transition-all duration-200 
                   hover:cursor-pointer outline-none"
                 >
                   Anwenden
@@ -253,11 +209,7 @@ export default function FilterSort({
                 setIsFilterOpen(false);
               }
             }}
-            className="p-2.5 rounded-2xl bg-[#1e1e1e] text-gray-100 font-medium 
-            shadow-[inset_0_1px_2px_rgba(255,255,255,0.15),0_1px_2px_rgba(0,0,0,0.4),0_4px_8px_rgba(0,0,0,0.25)]
-            hover:shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_2px_4px_rgba(0,0,0,0.5),0_6px_12px_rgba(0,0,0,0.3)]
-            active:translate-y-[1px] transition-all duration-200 hover:cursor-pointer
-            hover:scale-110 active:scale-95"
+            className="btn-icon"
             aria-label="Sort"
           >
             <ArrowUpDown size={18} />
@@ -267,7 +219,7 @@ export default function FilterSort({
           {isSortOpen && (
             <div
               className={`${isSortClosing ? "dropdown-slide-out" : "dropdown-slide-in"} 
-              absolute right-0 mt-2 w-48 bg-[#1e1e1e]/95 backdrop-blur-md rounded-2xl 
+              absolute right-0 mt-2 w-48 bg-card/95 backdrop-blur-md rounded-2xl 
               shadow-[0_8px_32px_rgba(0,0,0,0.6)] border border-gray-700 p-3 z-50`}
             >
               <h3 className="text-sm font-semibold text-gray-100 mb-3">
@@ -280,11 +232,10 @@ export default function FilterSort({
                     handleSortClose();
                   }}
                   className={`w-full text-left px-3 py-2 rounded-xl transition-all text-sm
-                  ${
-                    sortBy === "newest"
+                  ${sortBy === "newest"
                       ? "bg-blue-600 text-white"
                       : "text-gray-200 hover:bg-[#2a2a2a]"
-                  }`}
+                    }`}
                 >
                   Neueste zuerst
                 </button>
@@ -294,11 +245,10 @@ export default function FilterSort({
                     handleSortClose();
                   }}
                   className={`w-full text-left px-3 py-2 rounded-xl transition-all text-sm
-                  ${
-                    sortBy === "oldest"
+                  ${sortBy === "oldest"
                       ? "bg-blue-600 text-white"
                       : "text-gray-200 hover:bg-[#2a2a2a]"
-                  }`}
+                    }`}
                 >
                   Älteste zuerst
                 </button>

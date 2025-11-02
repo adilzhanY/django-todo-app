@@ -1,2 +1,277 @@
 @import "tailwindcss";
 
+/* Custom Theme Variables */
+@theme {
+  /* Colors */
+  --color-dark: #121212;
+  --color-card: #1e1e1e;
+  --color-input: #2a2a2a;
+  
+  /* Shadows */
+  --shadow-input: inset 0 1px 2px rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-card: inset 0 1px 2px rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: inset 0 1px 2px rgba(255, 255, 255, 0.1), 0 4px 8px rgba(0, 0, 0, 0.5);
+  --shadow-button: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.25);
+  --shadow-button-hover: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 2px 4px rgba(0, 0, 0, 0.5), 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Component Classes */
+@layer utilities {
+  /* Input Field Base */
+  .input-field {
+    width: 100%;
+    padding: 0.625rem;
+    background-color: var(--color-input);
+    color: rgb(243 244 246);
+    border-radius: 0.75rem;
+    border: 1px solid transparent;
+    outline: none;
+    box-shadow: var(--shadow-input);
+    transition: all 0.15s;
+  }
+  
+  .input-field::placeholder {
+    color: rgb(156 163 175);
+  }
+  
+  .input-field:focus {
+    border-color: rgb(107 114 128);
+  }
+
+  /* Card Container */
+  .card {
+    background-color: var(--color-card);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Button Base */
+  .btn {
+    border-radius: 1rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-button);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    box-shadow: var(--shadow-button-hover);
+  }
+  
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    border-radius: 1rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-button);
+    background-color: var(--color-card);
+    color: rgb(243 244 246);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    box-shadow: var(--shadow-button-hover);
+    transform: scale(1.05);
+  }
+  
+  .btn-primary:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  /* Icon Button */
+  .btn-icon {
+    padding: 0.625rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-button);
+    background-color: var(--color-card);
+    color: rgb(243 244 246);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .btn-icon:hover {
+    box-shadow: var(--shadow-button-hover);
+    transform: scale(1.1);
+  }
+  
+  .btn-icon:active {
+    transform: translateY(1px) scale(0.95);
+  }
+
+  /* Icon Button Danger */
+  .btn-icon-danger {
+    padding: 0.625rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-button);
+    background-color: var(--color-card);
+    color: rgb(248 113 113);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  .btn-icon-danger:hover {
+    box-shadow: var(--shadow-button-hover);
+    transform: scale(1.1);
+    color: rgb(239 68 68);
+  }
+  
+  .btn-icon-danger:active {
+    transform: translateY(1px) scale(0.95);
+  }
+
+  /* Checkbox Custom */
+  .checkbox-custom {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    border-width: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    outline: none;
+    box-shadow: var(--shadow-input);
+  }
+  
+  .checkbox-custom:hover {
+    transform: scale(1.1);
+  }
+  
+  .checkbox-custom:active {
+    transform: scale(0.95);
+  }
+
+  .checkbox-custom-checked {
+    border-color: rgb(34 197 94);
+    background-color: rgb(34 197 94);
+  }
+
+  .checkbox-custom-unchecked {
+    border-color: rgb(107 114 128);
+    background-color: transparent;
+  }
+  
+  .checkbox-custom-unchecked:hover {
+    border-color: rgb(156 163 175);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes slideUpFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scaleY(0.95);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation Classes */
+.dropdown-enter {
+  animation: slideDownFadeIn 0.2s ease-out forwards;
+  transform-origin: top;
+}
+
+.dropdown-exit {
+  animation: slideUpFadeOut 0.15s ease-in forwards;
+  transform-origin: top;
+}
+
+.dropdown-slide-in {
+  animation: slideDownFadeIn 0.2s ease-out forwards;
+}
+
+.dropdown-slide-out {
+  animation: slideUpFadeOut 0.15s ease-in forwards;
+}
+
+.backdrop-enter {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.backdrop-exit {
+  animation: fadeOut 0.2s ease-in forwards;
+}
+
+.modal-enter {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.modal-exit {
+  animation: scaleOut 0.2s ease-in forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}

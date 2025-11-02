@@ -64,49 +64,12 @@ export default function CustomSelect({
 
   return (
     <>
-    <style>{`
-        @keyframes slideDownFadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px) scaleY(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scaleY(1);
-          }
-        }
-        
-        @keyframes slideUpFadeOut {
-          from {
-            opacity: 1;
-            transform: translateY(0) scaleY(1);
-          }
-          to {
-            opacity: 0;
-            transform: translateY(-10px) scaleY(0.95);
-          }
-        }
-        
-        .dropdown-enter {
-          animation: slideDownFadeIn 0.2s ease-out forwards;
-          transform-origin: top;
-        }
-        
-        .dropdown-exit {
-          animation: slideUpFadeOut 0.15s ease-in forwards;
-          transform-origin: top;
-        }
-      `}</style>
-
       <div ref={containerRef} className={`relative ${className}`}>
         {/* Select Button */}
         <button
           type="button"
           onClick={toggleOpen}
-          className="w-full appearance-none p-2.5 bg-[#2a2a2a] text-gray-100 rounded-xl 
-          border border-transparent focus:border-gray-500 outline-none
-          shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_1px_2px_rgba(0,0,0,0.4)]
-          transition-all cursor-pointer text-left relative z-50"
+          className="input-field w-full text-left relative z-50 cursor-pointer"
         >
           <span className={!selectedOption ? "text-gray-400" : ""}>
             {selectedOption?.label || placeholder}
@@ -134,8 +97,8 @@ export default function CustomSelect({
         {/* Dropdown Menu with Animation */}
         {isOpen && (
           <div
-            className={`${isClosing ? "dropdown-exit" : "dropdown-enter"} absolute z-50 w-full mt-1 bg-[#2a2a2a]/80 backdrop-blur-md rounded-xl 
-            border border-gray-700 shadow-[0_4px_6px_rgba(0,0,0,0.4)] overflow-hidden`}
+            className={`${isClosing ? "dropdown-exit" : "dropdown-enter"} absolute z-50 w-full mt-1 bg-input/80 backdrop-blur-md rounded-xl 
+            border border-gray-700 shadow-card overflow-hidden`}
           >
             <div className="max-h-60 overflow-y-auto py-1">
               {options.map((option) => (
