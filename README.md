@@ -2,6 +2,10 @@
 
 A modern full-stack Todo management application built with Django REST Framework and React + TypeScript, demonstrating professional web development practices and clean architecture.
 
+## Demo
+
+https://github.com/user-attachments/assets/80ada082-5dce-45f7-a55d-feec8f8fc25f
+
 ## Features
 
 - **Full CRUD Operations** for todo items
